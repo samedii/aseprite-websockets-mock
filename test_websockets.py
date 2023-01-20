@@ -1,16 +1,12 @@
 import websocket
 
 
-def on_message(ws, message):
+def on_message(wsapp, message):
     print(message)
 
 
-def on_error(wsapp, err):
-    print("Got a an error: ", err)
-
-
-wsapp = websocket.WebSocketApp(
-    "ws://localhost:8000/ws", on_message=on_message, on_error=on_error
-)
-wsapp.send("hey")
-wsapp.wait()
+ws = websocket.WebSocket()
+ws.connect("ws://localhost:8000/ws")
+ws.send("Hello, Server")
+print(ws.recv())
+ws.close()

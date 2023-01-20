@@ -44,7 +44,7 @@ async def websocket_endpoint(websocket: WebSocket):
     print("accepted", flush=True)
     data = await websocket.receive_text()
     print("Received: ", data)
-    await websocket.send_bytes(Path("cute_dragon.png").read_bytes(), flush=True)
+    await websocket.send_bytes(Path("cute_dragon.png").read_bytes())
 
 
 if __name__ == "__main__":
